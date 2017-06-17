@@ -1,7 +1,5 @@
 package cxf.rest.ws.entities;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -9,8 +7,7 @@ import java.io.Serializable;
  * Created by Ghazi Naceur on 16/06/2017.
  */
 @XmlRootElement(name = "Book")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Book implements Serializable{
+public class Book implements Serializable {
 
     private long id;
 
@@ -20,6 +17,12 @@ public class Book implements Serializable{
 
     public Book() {
         super();
+    }
+
+    public Book(long id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
     }
 
     public long getId() {

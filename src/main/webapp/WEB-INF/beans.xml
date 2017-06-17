@@ -10,12 +10,10 @@
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
 
-    <jaxrs:server id="bookService" address="/bookservice">
+    <jaxrs:server id="bookService" address="/bs">
 
         <jaxrs:serviceBeans>
             <bean class="cxf.rest.ws.service.BookService">
-                <!-- Set the Root directory of the service -->
-                <constructor-arg value="target"/>
             </bean>
         </jaxrs:serviceBeans>
 
@@ -23,10 +21,6 @@
             <entry key="json" value="application/json"/>
             <entry key="xml" value="application/xml"/>
         </jaxrs:extensionMappings>
-
-        <jaxrs:providers>
-            <bean class="org.eclipse.persistence.jaxb.rs.MOXyJsonProvider"/>
-        </jaxrs:providers>
 
     </jaxrs:server>
 
