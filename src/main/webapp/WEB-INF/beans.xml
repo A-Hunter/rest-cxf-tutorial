@@ -9,6 +9,11 @@
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
+    <!-- to support Java-to-JSON and vice-versa conversion -->
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+
+    <!-- to support Java-to-XML and vice-versa conversion -->
+    <bean id="jaxbXmlProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 
     <jaxrs:server id="bookService" address="/bs">
 
@@ -16,6 +21,11 @@
             <bean class="cxf.rest.ws.service.BookService">
             </bean>
         </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+            <ref bean="jaxbXmlProvider" />
+        </jaxrs:providers>
 
         <jaxrs:extensionMappings>
             <entry key="json" value="application/json"/>
